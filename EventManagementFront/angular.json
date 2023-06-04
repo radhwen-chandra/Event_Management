@@ -31,6 +31,9 @@
               "src/assets/dashboard-interface.scss"
             ],
             "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.js"
+
             ]
           },
           "configurations": {
@@ -100,6 +103,8 @@
               "src/assets/dashboard-interface.scss"
             ],
             "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.js"
             ]
           }
         }

@@ -1,0 +1,86 @@
+<div class="app__slide-wrapper">
+    <div class="breadcrumb__area">
+       <div class="breadcrumb__wrapper mb-35">
+          <div class="breadcrumb__main">
+             <div class="breadcrumb__inner">
+                <div class="breadcrumb__icon">
+                   <i class="flaticon-home"></i>
+                </div>
+                <div class="breadcrumb__menu">
+                   <nav>
+                      <ul>
+                      <li><span><a href="dashboard.html">Home</a></span></li>
+                         <li class="active"><span>Event List</span></li>
+                      </ul>
+                   </nav>
+                </div>
+             </div>
+             <div class="breadcrum__button">
+                <a class="breadcrum__btn event__popup-active" href="add-event">Create Event<i class="fa-regular fa-plus"></i></a>
+             </div>
+          </div>
+       </div>
+    </div>
+    <div class="event__list-area pb-20">
+       <div class="event__content-inner">
+          <div class="tab-content" id="myTabContent">
+             <div class="tab-pane fade show active" id="day-tab-1-pane" role="tabpanel" aria-labelledby="day-tab-1" tabindex="0">
+                <div class="body__card-wrapper">
+                   <h4 class="event__information-title mb-25">Event Information</h4>
+                   <div class="attendant__wrapper mb-35">
+                      <table>
+                         <thead>
+                            <tr>
+                               <th>ID No</th>
+                               <th>Event Name</th>
+                               <th>Ticket Price</th>
+                               <th>Date</th>
+                               <th>Location</th>
+                               <th>Edit</th>
+                               <th>Delete</th>
+                            </tr>
+                         </thead>
+                         <tbody>                                 
+                           
+                           
+                            <tr *ngFor="let list of lists">
+                               <td>
+                                  <div class="attendant__serial">
+                                     <span>{{list.id}}</span>
+                                  </div>
+                               </td>
+                               <td>
+                                  <div class="attendant__seminer" >
+                                     <span><button routerLink="../details/{{list.id}}">{{list.eventTitle}}</button></span>
+                                  </div>
+                               </td>
+                               <td>
+                                 {{list.ticketPrice}}
+                               </td>
+                               <td>
+                                  <div class="attendant__date" >
+                                     <span>{{list.dateEvent}}</span>
+                                  </div>
+                               </td>
+                               <td>
+                                  <div class="attendant__location" >
+                                     <span>{{list.adressEvent}}
+                                        </span>
+                                  </div>
+                               </td>
+                               <td>
+                                 <button type="button" class="btn btn-primary" routerLink="../update/{{list.id}}">edit</button>
+                               </td>
+                               <td>
+                                 <button type="button" class="btn btn-danger"(click)="deleteEvent(list.id)">delete</button>
+                               </td>
+                            </tr>
+                         </tbody>
+                      </table>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>

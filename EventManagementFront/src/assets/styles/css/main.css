@@ -3656,9 +3656,11 @@ input[type=file] {
 
 .app__slide-wrapper {
   padding: 0 30px;
-  margin-top: 76px;
+  margin-top: 0;
   position: relative;
   z-index: -1;
+  margin-left: -16rem;
+  margin-top: 5rem;
 }
 @media only screen and (min-width: 1400px) and (max-width: 1600px), only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), (max-width: 575px) {
   .app__slide-wrapper {
