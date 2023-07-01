@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-event-details',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
+list: any[]=[];
+id!:number;
+  constructor(private es: EventService,private route: ActivatedRoute) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    
+    this.route.params.subscribe(params => {
+      this.id = params['id']}); 
+      this.getEvent(this.id);
   }
+getEvent(id:number){
+  this.es.getById(id).subscribe((res)=>{
+    this.list = res
+  },(error)=>{
+    console.log(error)
+  })
+}
 
 }

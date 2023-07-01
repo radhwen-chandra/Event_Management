@@ -14,16 +14,27 @@ export class EventService {
    getAll(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}`);
   }
+  
 
   create(data: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}`, data);
   }
 
   update(id: number, data: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/votre-ressource/${id}`, data);
+    return this.http.put<any>(`${this.baseUrl}/${id}`, data);
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}/votre-ressource/${id}`);
+    return this.http.delete<any>(`${this.baseUrl}/${id}`);
   }
+
+  getById(id:number): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/${id}`);
+  }
+  
+
+  getEventByStatus(status:any): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/byStatus/${status}`);
+  }
+
 }

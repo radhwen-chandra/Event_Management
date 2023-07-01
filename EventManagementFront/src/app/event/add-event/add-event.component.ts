@@ -12,6 +12,8 @@ export class AddEventComponent{
   constructor(private formBuilder: FormBuilder, private es: EventService) {
     this.form = this.formBuilder.group({
       dateEvent: ['', Validators.required],
+      dateFinEvent: ['', Validators.required],
+      deadLine: ['', Validators.required],
       adressEvent: ['', [Validators.required]],
       organiser: ['', [Validators.required]],
       description: ['', [Validators.required]],
@@ -19,16 +21,31 @@ export class AddEventComponent{
       ticketPrice: ['', [Validators.required ]],
       nbrParticipant: ['', [Validators.required ]],
       email: ['', [Validators.required ]],
+      category: ['', [Validators.required ]],
+      eventType: ['', [Validators.required ]],
       status: ['', [Validators.required ]],
       eventTitle: ['', [Validators.required ]],
+      budget: ['', [Validators.required ]],
 
     });
+  }
+  ngOnInit(): void {
+  }
+  successMessage: string = '';
+
+  showSuccessMessage() {
+    this.successMessage = 'L\'élément a été ajouté avec succès !';
+    // Réinitialiser le message après un certain délai si nécessaire
+    setTimeout(() => {
+      this.successMessage = '';
+    }, 3000); // Efface le message après 3 secondes
   }
   onSubmit() {
     console.log(this.form)
     if (this.form.valid) {
       this.es.create(this.form.value).subscribe(
         response => {
+          this.showSuccessMessage();
           console.log('Données envoyées avec succès !', response);
           this.form.reset();
         },

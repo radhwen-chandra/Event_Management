@@ -10,7 +10,7 @@
                         <nav>
                             <ul>
                                 <li><span><a href="dashboard.html">Home</a></span></li>
-                                <li class="active"><span>Create Event</span></li>
+                                <li class="active"><span>Update Event</span></li>
                             </ul>
                         </nav>
                     </div>
@@ -24,7 +24,7 @@
                 <div class="body__card-wrapper">
                     <div class="card__header-top">
                         <div class="card__title-inner">
-                            <h4 class="event__information-title">Create Event</h4>
+                            <h4 class="event__information-title">Update Event</h4>
                         </div>
                         <div class="card__header-dropdown">
                             <div class="dropdown">
@@ -49,12 +49,16 @@
                             </div>
                         </div>
                     </div>
-                    <form class="create__event-main pt-25" [formGroup]="form" (submit)="onSubmit()" >
+                    <form class="create__event-main pt-25" [formGroup]="form" (ngSubmit)="onSubmit()" >
                         <div class="event__left-box">
                             <div class="create__input-wrapper">
                                     <div class="singel__input-field mb-15">
-                                        <label class="input__field-text">Event Title</label>
+                                        <label class="input__field-text">Event Name</label>
                                         <input type="text" formControlName="eventTitle">
+                                    </div>
+                                    <div class="singel__input-field mb-15">
+                                        <label class="input__field-text">Event Category</label>
+                                        <input type="text" formControlName="category">
                                     </div>
                                     <div class="event__input mb-15">
                                         <label class="input__field-text" >Event Details</label>
@@ -65,8 +69,22 @@
                                 <div class="row g-20">
                                     <div class="col-xxl-12 col-xl-12 col-lg-12">
                                         <div class="singel__input-field is-color-change mb-15">
-                                            <label class="input__field-text">Date</label>
+                                            <label class="input__field-text">Start Date</label>
                                             <input type="date" formControlName="dateEvent">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12">
+                                        <div class="singel__input-field is-color-change mb-15">
+                                            <label class="input__field-text">End Date</label>
+                                            <input type="date" formControlName="dateFinEvent">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12">
+                                        <div class="singel__input-field is-color-change mb-15">
+                                            <label class="input__field-text">Deadline</label>
+                                            <input type="date" formControlName="deadLine">
                                         </div>
                                     </div>
 
@@ -79,10 +97,10 @@
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <label class="input__field-text">Event Type</label>
                                         <div class="contact__select">
-                                            <select>
+                                            <select formControlName="eventType">
                                                 <option value="0">Select the services</option>
-                                                <option value="1">Free</option>
-                                                <option value="1">Paid</option>
+                                                <option value="FREE">FREE</option>
+                                                <option value="PAID">PAID</option>
                                             </select>
                                         </div>
                                     </div>
@@ -101,12 +119,12 @@
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <label class="input__field-text">Event Status</label>
                                         <div class="contact__select">
-                                            <select>
-                                                <option value="0">PLANIFIE</option>
-                                                <option value="1">ANNULE</option>
-                                                <option value="1">REPORTE</option>
-                                                <option value="3">ENCOURS</option>
-                                                <option value="4">TERMINE</option>
+                                            <select formControlName="status">
+                                                <option value="PLANIFIE">PLANIFIE</option>
+                                                <option value="ANNULE">ANNULE</option>
+                                                <option value="REPORTE">REPORTE</option>
+                                                <option value="ENCOURS">ENCOURS</option>
+                                                <option value="TERMINE">TERMINE</option>
                                             </select>
                                         </div>
                                     </div>
@@ -126,13 +144,25 @@
                                         <label class="input__field-text">Phone Number</label>
                                         <input type="text" formControlName="telNumber">
                                     </div> 
+
+                                    <div class="singel__input-field mb-15">
+                                        <label class="input__field-text">Budget</label>
+                                        <input type="text" formControlName="budget">
+                                    </div> 
                                     <button class="input__btn w-100" type="submit">Update Event</button>
-                                
+                                    
+                                    <div *ngIf="successMessage" class="success-message">
+                                        <i class="fa fa-check-circle"></i>
+                                        <span>{{ successMessage }}</span>
+                                      </div>
                             </div>
+                         
                         </div>
+                        
                     </form>
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
