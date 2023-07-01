@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
 import { EventService } from 'src/app/services/event.service';
 
 @Component({
@@ -10,11 +9,10 @@ import { EventService } from 'src/app/services/event.service';
 export class ListcrudComponent implements OnInit {
 
   lists:   any[] = [];
-  constructor(private es: EventService,private router: ActivatedRoute) { }
+  constructor(private es: EventService) { }
 
   ngOnInit(): void {
     this.getallevents()
-    
   }
 
   getallevents(){
@@ -23,12 +21,5 @@ export class ListcrudComponent implements OnInit {
     },(err)=>{
       console.log(err)
     })
-  }
-  deleteEvent(id:number){
-    this.es.delete(id).subscribe(
-      (res)=>{
-        this.getallevents();
-      }
-    )
   }
 }
