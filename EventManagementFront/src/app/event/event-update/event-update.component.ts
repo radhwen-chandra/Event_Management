@@ -27,7 +27,7 @@ export class EventUpdateComponent implements OnInit {
       email: ['', [Validators.required]],
       status: ['', [Validators.required]],
       eventTitle: ['', [Validators.required]],
-     
+      /// eventId: string;
     });
   }
   ngOnInit(): void {

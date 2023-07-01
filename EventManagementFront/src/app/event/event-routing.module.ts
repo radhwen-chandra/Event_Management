@@ -13,7 +13,7 @@ const routes: Routes = [
     children : [
       { path: 'list',component: EventListComponent },
       { path: 'add',   component: AddEventComponent },
-      { path: 'details/:id',   component: EventDetailsComponent },
+      { path: 'details',   component: EventDetailsComponent },
       { path: 'listcrud',   component: ListcrudComponent },
       { path: 'update/:id',   component: EventUpdateComponent },
     ]

@@ -20,10 +20,10 @@ export class EventService {
   }
 
   update(id: number, data: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/${id}`, data);
+    return this.http.put<any>(`${this.baseUrl}/votre-ressource/${id}`, data);
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}/${id}`);
+    return this.http.delete<any>(`${this.baseUrl}/votre-ressource/${id}`);
   }
 }
