@@ -3,15 +3,14 @@ import { NgModule } from '@angular/core';
 import { ProfileComponent } from '../profile/profile.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { ContainerLayoutsComponent } from './container-layouts.component';
-import { EventListComponent } from '../event/event-list/event-list.component';
-import { AddEventComponent } from '../event/add-event/add-event.component';
-import { EventDetailsComponent } from '../event/event-details/event-details.component';
+
 
 const routes: Routes = [
   {
     path:'',component:ContainerLayoutsComponent,
     children : [
-      { path:'event',loadChildren:() => import('../event/event.module').then(m => m.EventModule)}
+      { path:'logistic',loadChildren:() => import('../logistique/logistic.module').then(m => m.LogisticModule)},
+      { path:'logisticdetails',loadChildren:() => import('../logistic-detail/logdetail.module').then(m => m.LogdetailModule)},
     ]
   }
 ];
