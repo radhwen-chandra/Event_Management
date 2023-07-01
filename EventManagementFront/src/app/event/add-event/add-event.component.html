@@ -24,7 +24,7 @@
                 <div class="body__card-wrapper">
                     <div class="card__header-top">
                         <div class="card__title-inner">
-                            <h4 class="event__information-title">Create Event</h4>
+                            <h4 class="event__information-title">Event Information</h4>
                         </div>
                         <div class="card__header-dropdown">
                             <div class="dropdown">
@@ -49,31 +49,34 @@
                             </div>
                         </div>
                     </div>
-                    <form class="create__event-main pt-25" [formGroup]="form" (submit)="onSubmit()" >
+                    <div class="create__event-main pt-25">
                         <div class="event__left-box">
                             <div class="create__input-wrapper">
+                                <form action="#">
                                     <div class="singel__input-field mb-15">
                                         <label class="input__field-text">Event Title</label>
-                                        <input type="text" formControlName="eventTitle">
+                                        <input type="text">
                                     </div>
                                     <div class="event__input mb-15">
-                                        <label class="input__field-text" >Event Details</label>
-                                        <textarea placeholder="" formControlName="description"></textarea>
+                                        <label class="input__field-text">Event Details</label>
+                                        <textarea placeholder=""></textarea>
                                     </div>
+                                </form>
                             </div>
                             
+                            <form action="#">
                                 <div class="row g-20">
                                     <div class="col-xxl-12 col-xl-12 col-lg-12">
                                         <div class="singel__input-field is-color-change mb-15">
                                             <label class="input__field-text">Date</label>
-                                            <input type="date" formControlName="dateEvent">
+                                            <input type="date">
                                         </div>
                                     </div>
 
                                     <div class="col-xxl-12 col-xl-12 col-lg-12">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text">Venue / Address</label>
-                                            <input type="text" placeholder="" formControlName="adressEvent">
+                                            <input type="text" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
@@ -83,54 +86,63 @@
                                                 <option value="0">Select the services</option>
                                                 <option value="1">Free</option>
                                                 <option value="1">Paid</option>
+                                                <option value="3">Option</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text">Total Seat</label>
-                                            <input type="number" formControlName="nbrParticipant">
+                                            <input type="number" value="1250">
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field">
                                             <label class="input__field-text">Ticket Price</label>
-                                            <input type="text" value="$10.00" formControlName="ticketPrice" >
+                                            <input type="text" value="$25.00">
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <label class="input__field-text">Event Status</label>
                                         <div class="contact__select">
-                                            <select formControlName="status">
-                                                <option value="PLANIFIE">PLANIFIE</option>
-                                                <option value="ANNULE">ANNULE</option>
-                                                <option value="REPORTE">REPORTE</option>
-                                                <option value="ENCOURS">ENCOURS</option>
-                                                <option value="TERMINE">TERMINE</option>
+                                            <select>
+                                                <option value="0">Confirmed</option>
+                                                <option value="1">waiting</option>
+                                                <option value="1">confused</option>
+                                                <option value="3">Option</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
+                            </form>
                         </div>
                         <div class="event__right-box">
                             <div class="create__input-wrapper">
+                                <form action="#">
                                     <div class="singel__input-field mb-15">
-                                        <label class="input__field-text">Organiser</label>
-                                        <input type="text" formControlName="organiser">
+                                        <label class="input__field-text">Speaker Name</label>
+                                        <input type="text">
                                     </div>
                                     <div class="singel__input-field mb-15">
                                         <label class="input__field-text">Email</label>
-                                        <input type="text" formControlName="email">
+                                        <input type="text">
                                     </div>
                                     <div class="singel__input-field mb-15">
                                         <label class="input__field-text">Phone Number</label>
-                                        <input type="text" formControlName="telNumber">
-                                    </div> 
+                                        <input type="text">
+                                    </div>
+                                    <div class="singel__input-field mb-15">
+                                        <label class="input__field-text">Designation</label>
+                                        <input type="text">
+                                    </div>
+                                   
+                                    <button type="submit" class="unfield__input-btn w-100 mb-20"><i
+                                            class="fa-regular fa-plus"></i>Add More Speaker</button>
                                     <button class="input__btn w-100" type="submit">Create Event</button>
-                                
+                                </form>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
