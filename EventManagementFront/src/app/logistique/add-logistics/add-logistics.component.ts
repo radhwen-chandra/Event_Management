@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LogisticsService } from 'src/app/services/logistics.service';
-import { AddLogisticsdetailsComponent} from 'src/app/logistic-detail/add-logisticsdetails/add-logisticsdetails.component';
+import { LogisticDetails, Logistics } from '../models/logistic.model';
 
 
 @Component({
@@ -12,18 +12,29 @@ import { AddLogisticsdetailsComponent} from 'src/app/logistic-detail/add-logisti
 
 export class AddLogisticsComponent {
   form: FormGroup;
+  form1: FormGroup;
+
+  logisticDetails : LogisticDetails[] = [];
 
   constructor(private formBuilder: FormBuilder, private ls: LogisticsService) {
     this.form = this.formBuilder.group({
       commentaire: ['', [Validators.required]],
       datelogistic: ['', Validators.required],
       totalCost: ['', [Validators.required]],
-    
+
+    });
+
+    this.form1 = this.formBuilder.group({
+      libele: ['', [Validators.required]],
+
     });
    }
   onSubmit() {
     console.log(this.form.value)
     if (this.form.valid) {
+      let logistic : Logistics = this.form.value;
+      logistic.logisticDetails = this.logisticDetails;
+      debugger
       this.ls.create(this.form.value).subscribe(
         Response => {
           console.log('Données envoyées avec succès !', Response);
@@ -35,7 +46,13 @@ export class AddLogisticsComponent {
       );
     }
   }
- 
+
+  afterAddLogisticDetails(){
+    if (this.form1.valid) {
+      this.logisticDetails.push(this.form1.value);
+    }
+  }
+
 
 
 }
