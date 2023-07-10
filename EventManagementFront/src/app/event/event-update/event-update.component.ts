@@ -10,19 +10,6 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class EventUpdateComponent implements OnInit {
   id!:number
-  eventToUpdate = {
-    dateEvent:"",
-    adressEvent: "",
-    organiser: "",
-    description: "",
-    telNumber: "",
-    ticketPrice: "",
-    nbrParticipant: "",
-    email: "",
-    status: "",
-    eventTitle: "",
-    
-  };
   successMessage: string = '';
   form!: FormGroup;
   constructor(
@@ -64,7 +51,7 @@ export class EventUpdateComponent implements OnInit {
   getByID(id: number){
     this.es.getById(id).subscribe(res =>{
       this.form.patchValue(res)
-      
+      console.log(res)
     })
   }
   onSubmit() {

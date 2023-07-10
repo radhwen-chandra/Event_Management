@@ -15,7 +15,9 @@ import { FormsModule } from '@angular/forms'; // Importez FormsModule ici
     LogisticRoutingModule,
     ReactiveFormsModule,
     FormsModule
-    
+  ],
+  exports: [
+    LogisticRoutingModule.components,
   ]
 })
 export class LogisticModule { }

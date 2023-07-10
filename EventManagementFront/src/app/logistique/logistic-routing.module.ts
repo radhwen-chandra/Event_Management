@@ -4,6 +4,7 @@ import { LogisticsListComponent } from './logistics-list/logistics-list.componen
 import { AddLogisticsComponent } from './add-logistics/add-logistics.component';
 import { UpdatelogisticsComponent } from './updatelogistics/updatelogistics.component';
 import { LogistiqueComponent } from './logistique.component';
+import { AffecterEventComponent } from './affecter-event/affecter-event.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,8 @@ const routes: Routes = [
       { path: 'add',   component: AddLogisticsComponent },
       { path: 'list',   component: LogisticsListComponent },
       { path: 'update/:id',   component: UpdatelogisticsComponent },
-      
+      { path: 'affecterEvent/:idEvent',   component: AffecterEventComponent },
+
      
     ]
   }
@@ -26,8 +28,9 @@ const routes: Routes = [
 export class LogisticRoutingModule {
   static components = [
     LogistiqueComponent,
-  AddLogisticsComponent,
-  LogisticsListComponent,
-  UpdatelogisticsComponent,
+    AddLogisticsComponent,
+    LogisticsListComponent,
+    UpdatelogisticsComponent,
+    AffecterEventComponent
   ]
  }

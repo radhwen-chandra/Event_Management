@@ -28,37 +28,38 @@
                 <div class="body__card-wrapper">
                    <h4 class="event__information-title mb-25">Event Information</h4>
                    <div class="attendant__wrapper mb-35">
-                     <div>
-                        <label *ngFor="let status of lists">
-                          <input type="checkbox" (change)="updateSelectedStatus($event, status)">{{ status }}
-                        </label>
-                      </div>
                      <form>
                         Status
                         <div class="container">
                            <div>
-                              <div> <input type="checkbox">
+                              <div> <input value="PLANIFIE" type="checkbox" (change)="updateSelectedStatus($event)">
                                        <label>PLANNED</label>
                               </div>
                            </div>
-                           <div> <input type="checkbox">
+                           <div> <input value="ANNULE" type="checkbox" (change)="updateSelectedStatus($event)">
                                     <label>CANCELED</label>
                            </div>
-                           <div> <input type="checkbox">
+                           <div> <input value="REPORTE" type="checkbox" (change)="updateSelectedStatus($event)">
                                     <label>POSTPONED</label>
                            </div>
-                           <div> <input type="checkbox">
+                           <div> <input value="ENCOURS" type="checkbox" (change)="updateSelectedStatus($event)">
                                     <label>IN PROGRESS</label>
                            </div>
-                           <div> <input type="checkbox">
+                           <div> <input value="TERMINE" type="checkbox" (change)="updateSelectedStatus($event)">
                                     <label>ENDED</label>
                            </div>
                         </div>
                      </form>
+                     <select (change)="selectCategory($event)">
+                        <option value="HEALTH" >HEALTH</option>
+                        <option value="TECHNOLOGY">TECHNOLOGY</option>
+                        <option value="BUSINESS">BUSINESS</option>
+                        <option value="CHARITY">CHARITY</option>
+                        <option value="FASHION">FASHION</option>
+                    </select> 
                       <table>
                          <thead>
                             <tr>
-                               <th>ID No</th>
                                <th>Event Name</th>
                                <th>Ticket Price</th>
                                <th>Start Date</th>
@@ -66,17 +67,13 @@
                                <th>Location</th>
                                <th>Edit</th>
                                <th>Delete</th>
+                               <th>Add logistic</th>
                             </tr>
                          </thead>
                          <tbody>                                 
                            
                            
                             <tr *ngFor="let list of lists">
-                               <td>
-                                  <div class="attendant__serial">
-                                     <span>{{list.id}}</span>
-                                  </div>
-                               </td>
                                <td>
                                   <div class="attendant__seminer" >
                                      <span><button routerLink="../details/{{list.id}}">{{list.eventTitle}}</button></span>
@@ -106,6 +103,9 @@
                                </td>
                                <td>
                                  <button type="button" class="btn btn-danger"(click)="deleteEvent(list.id)">Delete</button>
+                               </td>
+                               <td>
+                                 <button type="button" class="btn btn-primary" routerLink="../../logistic/affecterEvent/{{list.id}}">Add logistic</button>
                                </td>
                             </tr>
                          </tbody>

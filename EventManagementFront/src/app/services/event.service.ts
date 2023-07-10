@@ -36,5 +36,9 @@ export class EventService {
   getEventByStatus(status:any): Observable<any>{
     return this.http.get<any>(`${this.baseUrl}/byStatus/${status}`);
   }
+  getEventByCategory(category:any): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/byCategory/${category}`);
+  }
 
+  
 }

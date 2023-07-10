@@ -1,0 +1,40 @@
+<h2>Logistic List</h2>
+<button (click)="saveChanges()" type="button">saveChanges
+
+</button>
+<table>
+    <thead>
+        <tr>
+            <th>Select</th>
+            <th>Logistic Description</th>
+            <th>Date</th>
+            <th>totalCost</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let affect of affectedList">
+        <tr>
+           
+        <td>
+            <div>
+                <input type="radio" name="id" [value]="affect.id" [(ngModel)]="idLogistic">
+              </div>
+        </td>
+                <td>
+                    <div>
+                        {{affect.commentaire}}
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        {{affect.datelogistic}}
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        {{affect.totalCost}}
+                    </div>
+                </td>
+            
+        </tr>
+    </tbody>
+</table>

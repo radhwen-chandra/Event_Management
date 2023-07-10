@@ -51,5 +51,8 @@ export class LogisticsService {
   affecterLogisticdetailsLogistique(logistics: any, logisticDetailsList: any[]): Observable<any> {
     return this.http.post(`${this.baseUrl}/affecter-logistic-details-logistique`, { logistics, logisticDetailsList });
   }
-    
+  affecterEvent(idEvent: number,id: number): Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}/${idEvent}/${id}`,{});
+  }   
+
 }
