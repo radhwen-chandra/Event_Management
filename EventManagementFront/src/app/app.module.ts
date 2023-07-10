@@ -1,17 +1,16 @@
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule,FormsModule } from '@angular/forms';
-import { LogisticsService } from './services/logistics.service';
-import { EventService } from './services/event.service';
-import { LogisticDetailComponent } from './logistic-detail/logistic-detail.component';
-import { LogisticsDetailsService } from './services/logistics-details.service';
-import { NgxPaginationModule } from 'ngx-pagination';
-
-
+import { JwtInterceptor } from './security/JwtInterceptor';
+import { AuthenticationService } from './security/authentication.service';
+import { SignInComponent } from './user-components/sign-in/sign-in.component';
+import { SignUpComponent } from './user-components/sign-up/sign-up.component';
+import { UserService } from './user/user.service';
 
 
 
@@ -19,20 +18,30 @@ import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
-   
+    SignUpComponent,
+    SignInComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    
+
   ],
   providers: [
+    UserService,
+    AuthenticationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
 
- 
+
 export class AppModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '@app/app/security/authentication.service';
+import { UserService } from '@app/app/user/user.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor() { }
+  isAdmin : boolean =false;
+
+  constructor(private authenticationService : AuthenticationService,private userService:UserService) { }
 
   ngOnInit(): void {
+    let currentUser = this.authenticationService.getCurrentUser();
+    this.userService.getUserById(+currentUser).subscribe(data=>{
+      if(data){
+        if (data.role === "ADMIN"){
+          this.isAdmin = true;
+        }else{
+          this.isAdmin = false;
+        }
+      }
+    })
   }
 
 }
