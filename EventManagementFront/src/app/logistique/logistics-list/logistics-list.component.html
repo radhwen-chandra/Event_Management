@@ -1,0 +1,90 @@
+<div class="app__slide-wrapper">
+   <div class="breadcrumb__area">
+      <div class="breadcrumb__wrapper mb-35">
+         <div class="breadcrumb__main">
+            <div class="breadcrumb__inner">
+               <div class="breadcrumb__icon">
+                  <i class="flaticon-home"></i>
+               </div>
+               <div class="breadcrumb__menu">
+                  <nav>
+                     <ul>
+                        <li><span><a href="dashboard.html">Home</a></span></li>
+                        <li class="active"><span>Logistic List</span></li>
+                     </ul>
+                  </nav>
+               </div>
+            </div>
+            <div class="breadcrum__button">
+               <a class="breadcrum__btn event__popup-active" href="add-event">Create Logistic<i
+                     class="fa-regular fa-plus"></i></a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="event__list-area pb-20">
+      <div class="event__content-inner">
+         <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="day-tab-1-pane" role="tabpanel" aria-labelledby="day-tab-1"
+               tabindex="0">
+               <div class="body__card-wrapper">
+                  <h4 class="event__information-title mb-25">Logistic Information</h4>
+                  
+                  <div>
+                     <form (ngSubmit)="searchByDate()">
+                       <input type="date" name="searchDate" [(ngModel)]="searchDate">
+                       <button type="submit">Search</button>
+                     </form>
+                   </div>
+                   
+                   
+                  <div class="attendant__wrapper mb-35">
+                     <table>
+                        <thead>
+                           <tr>
+                              <th>ID No</th>
+                              <th>Description</th>
+                              <th>Date</th>
+                              <th>Total Cost</th>
+                              <th>Edit</th>
+                              <th>Delete</th>
+                              <!-- <th>Affect</th> -->
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr *ngFor="let list of sortedLists">
+                              <td>
+                                 <div class="attendant__serial">
+                                    <span>{{ list.id }}</span>
+                                 </div>
+                              </td>
+                              <td>
+                                 {{ list.commentaire }}
+                              </td>
+                              <td>
+                                 {{ list.datelogistic }}
+                              </td>
+                              <td>
+                                 <div class="attendant__date">
+                                    <span>{{ list.totalCost }}</span>
+                                 </div>
+                              </td>                                                           
+                              <td>
+                                 <button type="button" class="btn btn-primary"
+                                    routerLink="../update/{{list.id}}">edit</button>
+                              </td>
+                              <td>
+                                 <button type="button" class="btn btn-danger"
+                                    (click)="deleteLogistics(list.id)">delete</button>
+                              </td>
+                             
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

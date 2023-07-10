@@ -7,19 +7,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JwtInterceptor } from './security/JwtInterceptor';
 import { AuthenticationService } from './security/authentication.service';
-import { AddUserComponent } from './user-components/add-user/add-user.component';
 import { SignInComponent } from './user-components/sign-in/sign-in.component';
 import { SignUpComponent } from './user-components/sign-up/sign-up.component';
-import { UserListComponent } from './user-components/user-list/user-list.component';
-import { UserService } from './user-components/user.service';
+import { UserService } from './user/user.service';
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
     SignInComponent,
-    UserListComponent,
-    AddUserComponent
+
   ],
   imports: [
     BrowserModule,
@@ -39,4 +40,6 @@ import { UserService } from './user-components/user.service';
   ],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }
