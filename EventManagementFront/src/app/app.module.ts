@@ -9,6 +9,8 @@ import { LogisticsService } from './services/logistics.service';
 import { EventService } from './services/event.service';
 import { LogisticDetailComponent } from './logistic-detail/logistic-detail.component';
 import { LogisticsDetailsService } from './services/logistics-details.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 
@@ -24,6 +26,7 @@ import { LogisticsDetailsService } from './services/logistics-details.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxPaginationModule,
     
   ],
   providers: [
