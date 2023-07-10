@@ -10,7 +10,7 @@
                   <nav>
                      <ul>
                         <li><span><a href="dashboard.html">Home</a></span></li>
-                        <li class="active"><span>Logistic List</span></li>
+                        <li class="active"><a  href="http://localhost:4200/logistic/list">Logistic List</a></li>
                      </ul>
                   </nav>
                </div>
@@ -29,15 +29,37 @@
                tabindex="0">
                <div class="body__card-wrapper">
                   <h4 class="event__information-title mb-25">Logistic Information</h4>
-                  
-                  <div>
-                     <form (ngSubmit)="searchByDate()">
-                       <input type="date" name="searchDate" [(ngModel)]="searchDate">
-                       <button type="submit">Search</button>
+
+
+                  <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                     <form style="display: flex; align-items: center;">
+                        
+                        <label for="startDate"
+                           style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;">
+                           Look in this area
+                        </label>
+                        <!-- <input type="date"
+                         style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;"
+                         name="startDate" [(ngModel)]="startDate" id="startDate" placeholder="Start Date">
+                       <input type="date"
+                         style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;"
+                         name="endDate" [(ngModel)]="endDate" id="endDate" placeholder="End Date"> -->
+                         <input type="date"
+                         style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;"
+                         name="startDate" [(ngModel)]="startDate" id="startDate" placeholder="Start Date">
+                       
+                       <input type="date"
+                         style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;"
+                         name="endDate" [(ngModel)]="endDate" id="endDate" placeholder="End Date">
+                       
+
+                        <button type="submit"
+                           style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+                           (click)="searchByDateRange()">
+                           Search
+                        </button>
                      </form>
-                   </div>
-                   
-                   
+                  </div>
                   <div class="attendant__wrapper mb-35">
                      <table>
                         <thead>
@@ -52,7 +74,8 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <tr *ngFor="let list of sortedLists">
+                           <!-- <tr *ngFor="let list of sortedLists"> -->
+                           <tr *ngFor="let list of pagedLists">
                               <td>
                                  <div class="attendant__serial">
                                     <span>{{ list.id }}</span>
@@ -68,7 +91,7 @@
                                  <div class="attendant__date">
                                     <span>{{ list.totalCost }}</span>
                                  </div>
-                              </td>                                                           
+                              </td>
                               <td>
                                  <button type="button" class="btn btn-primary"
                                     routerLink="../update/{{list.id}}">edit</button>
@@ -77,10 +100,24 @@
                                  <button type="button" class="btn btn-danger"
                                     (click)="deleteLogistics(list.id)">delete</button>
                               </td>
-                             
+
                            </tr>
                         </tbody>
                      </table>
+                     <!-- Custom Pagination -->
+                     <div class="custom-pagination d-flex justify-content-center">
+                        <button class="pagination-button" [disabled]="currentPage === 1" (click)="prevPage()">
+                           &larr; Prev
+                        </button>
+                        <div class="pagination-current-page mx-4">
+                           Page {{ currentPage }}
+                        </div>
+                        <button class="pagination-button" [disabled]="currentPage === totalPages" (click)="nextPage()">
+                           Next &rarr;
+                        </button>
+                     </div>
+
+
                   </div>
                </div>
             </div>
