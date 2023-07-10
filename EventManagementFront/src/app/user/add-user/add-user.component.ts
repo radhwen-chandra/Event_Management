@@ -66,7 +66,7 @@ export class AddUserComponent implements OnInit {
       if(user.id){
         this.userService.update(user.id,user).subscribe(data => {
           if (data) {
-            this.router.navigate(["/user-list"]);
+            this.router.navigate(["/user/user-list"]);
           } else {
             alert("Veuillez vérifier vos informations")
           }
@@ -74,7 +74,7 @@ export class AddUserComponent implements OnInit {
       }else{
         this.userService.signUp(user).subscribe(data => {
           if (data) {
-            this.router.navigate(["/user-list"]);
+            this.router.navigate(["/user/user-list"]);
           } else {
             alert("Veuillez vérifier vos informations")
           }

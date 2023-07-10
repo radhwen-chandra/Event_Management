@@ -20,7 +20,6 @@ export class UserListComponent implements OnInit {
   deleteUser(id : number){
     this.userService.deleteUser(id).subscribe(data=>{
       if(data){
-
         this.initData();
         alert("User deleted successfully")
       }
@@ -30,7 +29,7 @@ export class UserListComponent implements OnInit {
   navigateToUser(id: number) {
     this.userService.getUserById(id).subscribe(data => {
       if (data) {
-        this.router.navigate(["/add-user/"+id]);
+        this.router.navigate(["/user/add-user/"+id]);
       }
     })
   }
@@ -38,7 +37,6 @@ export class UserListComponent implements OnInit {
   initData(){
     this.userService.findAll().subscribe(data => {
       if (data) {
-        debugger
         this.userList = data;
       }
     })

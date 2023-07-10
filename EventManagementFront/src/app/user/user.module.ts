@@ -2,9 +2,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from '../app-routing.module';
 import { AddUserComponent } from './add-user/add-user.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserRoutingModule } from './user-routing.module';
 import { UserService } from './user.service';
 
 
@@ -12,11 +13,13 @@ import { UserService } from './user.service';
 @NgModule({
   declarations: [
     UserListComponent,
-    AddUserComponent
+    AddUserComponent,
+    UserDashboardComponent,
+    UserRoutingModule.components,
   ],
   imports: [
     CommonModule,
-    AppRoutingModule,
+    UserRoutingModule,
     FormsModule,
     ReactiveFormsModule,
   ],

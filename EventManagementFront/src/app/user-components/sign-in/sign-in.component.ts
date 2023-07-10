@@ -30,8 +30,8 @@ export class SignInComponent implements OnInit {
     user.password = this.userForm.get('password').value;
    this.userService.authenticate(user).subscribe(data=>{
     if(data){
-      this.authenticationService.setToken(data.token);
-      this.router.navigate(["/user-list"]);
+      this.authenticationService.setToken(data.token,data.currentUser);
+      this.router.navigate(["/user/user-list"]);
 
 
     }else{

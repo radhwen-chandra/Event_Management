@@ -18,7 +18,8 @@ export class AuthenticationService {
     return !this.jwtHelper.isTokenExpired(token);
   }
 
-  public setToken(token: string): void {
+  public setToken(token: string,userId : string): void {
+    localStorage.setItem('currentUser',userId)
     localStorage.setItem('token', token);
   }
 
@@ -26,7 +27,12 @@ export class AuthenticationService {
     return localStorage.getItem('token');
   }
 
+  public getCurrentUser(): string | null {
+    return localStorage.getItem('currentUser');
+  }
+
   public removeToken(): void {
+    localStorage.removeItem('currentUser');
     localStorage.removeItem('token');
   }
 }
