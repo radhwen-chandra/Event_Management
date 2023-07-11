@@ -5,6 +5,7 @@ import { AddLogisticsdetailsComponent } from './add-logisticsdetails/add-logisti
 import { LogisticsdetailsListComponent } from './logisticsdetails-list/logisticsdetails-list.component';
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 
+
 const routes: Routes = [
   {
     path:'',component: LogisticDetailComponent,
