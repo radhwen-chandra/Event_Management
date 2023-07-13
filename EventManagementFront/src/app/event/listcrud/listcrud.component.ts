@@ -12,6 +12,9 @@ export class ListcrudComponent implements OnInit {
 
   selectedStatus: string[] = [];
   lists:   any[] = [];
+  statusList:   any[] = [];
+ 
+
   constructor(private es: EventService,private router: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -34,20 +37,46 @@ export class ListcrudComponent implements OnInit {
       }
     )
   }
-  updateSelectedStatus(event: any, status: string) {
+  updateSelectedStatus(event: any) {
     if (event.target.checked) {
-      this.selectedStatus.push(status);
+      this.selectedStatus.push(event.target.value);
     } else {
-      const index = this.selectedStatus.indexOf(status);
+      const index = this.selectedStatus.indexOf(event.target.value);
       if (index > -1) {
         this.selectedStatus.splice(index, 1);
       }
     }
-    this.getEventsByStatus();
+    let status:string = ''
+    this.selectedStatus.forEach(element => {
+      status = status + ','+element
+    });
+    if(status === ""){
+    this.getallevents()  
+    }
+    else(
+      this.es.getEventByStatus(status).subscribe(
+        (res)=>{
+          this.lists = res
+        }
+      )
+        )
+    console.log(status)
   }
 
-  getEventsByStatus() {
-    this.es.getEventByStatus(this.selectedStatus)
-      .subscribe((events) => this.lists = events);
+
+
+  
+  selectCategory(event:any){
+    console.log(event.target.value)
+  this.es.getEventByCategory(event.target.value).subscribe((res)=>{
+    this.lists = res 
+    console.log(res)
   }
+  )  
+  
+  }
+
+  
+
+
 }
