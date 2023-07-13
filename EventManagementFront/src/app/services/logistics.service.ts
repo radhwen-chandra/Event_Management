@@ -72,5 +72,4 @@ export class LogisticsService {
       return new Date(a.datelogistic).getTime() - new Date(b.datelogistic).getTime();
     });
   }
-
 }

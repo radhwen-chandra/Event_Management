@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LogisticsService } from 'src/app/services/logistics.service';
 
+
 @Component({
   selector: 'app-logistics-list',
   templateUrl: './logistics-list.component.html',
@@ -12,12 +13,11 @@ export class LogisticsListComponent implements OnInit {
   startDate: Date | null = null;
   endDate: Date | null = null;
   
-
-
   currentPage: number = 1;
   itemsPerPage: number = 7;
   totalPages: number = 0;
   pages: number[] = [];
+  topLogistics: any[] = [];
 
   constructor(private ls: LogisticsService) { }
 
@@ -32,11 +32,20 @@ export class LogisticsListComponent implements OnInit {
         this.sortListsByDate();
         // this.searchItems(); // Ajoutez cette ligne pour effectuer une recherche initiale sur tous les éléments
         this.updatePagination();
+        this.getTopLogistics();
+
+
       },
       (err) => {
         console.log(err);
       }
     );
+  }
+  getTopLogistics() {
+    // Sort the lists by totalCost in descending order
+    const sortedByTotalCost = this.sortedLists.sort((a, b) => b.totalCost - a.totalCost);
+    // Get the top 3 logistics with the highest totalCost
+    this.topLogistics = sortedByTotalCost.slice(0, 3);
   }
  
   
