@@ -23,6 +23,7 @@ export class AddUserComponent implements OnInit {
       password: ['', [Validators.required]],
       dateNaissance: ['', [Validators.required]],
       sexe: ['', [Validators.required]],
+      role: ['', [Validators.required]],
       address: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
     });
@@ -62,6 +63,7 @@ export class AddUserComponent implements OnInit {
       user.address = this.userForm.get("address").value;
       user.dateNaissance = this.userForm.get("dateNaissance").value;
       user.sexe = this.userForm.get("sexe").value;
+      user.role = this.userForm.get("role").value;
 
       if(user.id){
         this.userService.update(user.id,user).subscribe(data => {

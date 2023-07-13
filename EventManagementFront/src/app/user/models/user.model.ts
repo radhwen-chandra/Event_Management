@@ -20,4 +20,5 @@ export enum SexeEnum {
 export enum RoleEnum {
   ADMIN = 'ADMIN',
   VISITOR = 'VISITOR',
+  ORGANISER = 'ORGANISER',
 }

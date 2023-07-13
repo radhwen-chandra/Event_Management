@@ -42,6 +42,22 @@ export class UserService {
     return this.http.delete<any>(`${this.endpointService}/${id}`);
   }
 
+  topUsers(): Observable<any> {
+    return this.http.get<any>(`${this.endpointService}/topusers`);
+  }
+
+  worstUsers(): Observable<any> {
+    return this.http.get<any>(`${this.endpointService}/worstUsers`);
+  }
+
+  newUsers(month: number): Observable<any> {
+    return this.http.get<any>(`${this.endpointService}/newUsers/${month}`);
+  }
+
+  percentage(): Observable<any> {
+    return this.http.get<any>(`${this.endpointService}/percentage`);
+  }
+
 
 }
 

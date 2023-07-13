@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -7,9 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDashboardComponent implements OnInit {
 
-  constructor() { }
+  topUsers : any;
+  worstUsers : any;
+  newUsers : any;
+  constructor(private userService : UserService) { }
 
   ngOnInit(): void {
+    this.userService.percentage().subscribe(data => {
+      if (data) {
+       debugger
+      }
+    })
+    this.userService.topUsers().subscribe(data=> {
+      if(data){
+        this.topUsers = data ;
+      }
+    })
+
+    this.userService.worstUsers().subscribe(data => {
+      if (data) {
+        this.worstUsers = data;
+      }
+    })
+    const d = new Date();
+    let month = d.getMonth();
+    this.userService.newUsers(month+1).subscribe(data => {
+      if (data) {
+        this.newUsers = data;
+      }
+    })
   }
 
 }

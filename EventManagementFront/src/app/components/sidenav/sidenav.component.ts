@@ -10,20 +10,29 @@ import { UserService } from '@app/app/user/user.service';
 export class SidenavComponent implements OnInit {
 
   isAdmin : boolean =false;
+  isOrganiser : boolean = false;
 
   constructor(private authenticationService : AuthenticationService,private userService:UserService) { }
 
   ngOnInit(): void {
     let currentUser = this.authenticationService.getCurrentUser();
-    this.userService.getUserById(+currentUser).subscribe(data=>{
-      if(data){
-        if (data.role === "ADMIN"){
-          this.isAdmin = true;
-        }else{
-          this.isAdmin = false;
+    if(currentUser){
+      this.userService.getUserById(+currentUser).subscribe(data=>{
+        if(data){
+          if (data.role === "ADMIN"){
+            this.isAdmin = true;
+          }else{
+            this.isAdmin = false;
+          }
+
+          if (data.role === "ORGANISER") {
+            this.isOrganiser = true;
+          } else {
+            this.isOrganiser = false;
+          }
         }
-      }
-    })
+      })
+    }
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '@app/app/security/authentication.service';
 import { User } from '../models/user.model';
 import { UserService } from '../user.service';
 
@@ -11,19 +12,24 @@ import { UserService } from '../user.service';
 export class UserListComponent implements OnInit {
 
   userList : User[];
-  constructor(private userService: UserService,private router:Router) { }
+  constructor(private userService: UserService,private authenticationService: AuthenticationService, private router:Router) { }
 
   ngOnInit(): void {
    this.initData();
   }
 
   deleteUser(id : number){
-    this.userService.deleteUser(id).subscribe(data=>{
-      if(data){
-        this.initData();
-        alert("User deleted successfully")
-      }
-    })
+    let text = "Veuillez confirmer la suppression de l'utilisateur";
+    if (confirm(text) == true) {
+      this.userService.deleteUser(id).subscribe(data => {
+        if (data) {
+          this.initData();
+          alert("User deleted successfully")
+        }
+      })
+    } else {
+    }
+
   }
 
   navigateToUser(id: number) {
@@ -38,6 +44,8 @@ export class UserListComponent implements OnInit {
     this.userService.findAll().subscribe(data => {
       if (data) {
         this.userList = data;
+        let userId = this.authenticationService.getCurrentUser();
+        this.userList = this.userList.filter(user => user.id !== +userId);
       }
     })
   }
