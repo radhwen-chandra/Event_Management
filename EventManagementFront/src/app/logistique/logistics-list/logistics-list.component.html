@@ -10,17 +10,51 @@
                   <nav>
                      <ul>
                         <li><span><a href="dashboard.html">Home</a></span></li>
-                        <li class="active"><a  href="http://localhost:4200/logistic/list">Logistic List</a></li>
+                        <li class="active"><a href="http://localhost:4200/logistic/list">Logistic List</a></li>
                      </ul>
                   </nav>
                </div>
             </div>
+            <!-- <tr class="top-logistics">
+               <h4> Top Logistics</h4>
+               <ul>
+                 <li *ngFor="let pot of topLogistics">
+                   {{ pot.libele }} - Total Cost: {{ pot.totalCost }}
+                 </li>
+               </ul>
+            </tr> -->
+
             <div class="breadcrum__button">
                <a class="breadcrum__btn event__popup-active" href="add-event">Create Logistic<i
                      class="fa-regular fa-plus"></i></a>
             </div>
          </div>
       </div>
+   </div>
+   <h4> Top Logistics</h4>
+   <div style="display: flex; align-items: normal; justify-content: left; margin-bottom: 20px;">
+      <form style="display: flex; align-items: normal;padding: 10px 20px; background-color: #ff6200; color: #fff; border: 10px solid #ccc; border-radius: 30px;">
+      
+      <table style="border: 10px">
+         <thead>
+            <tr>
+               <th>Description</th>
+               <th>Total Cost</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr *ngFor="let pot of topLogistics">
+               <td>
+                  {{ pot.commentaire }}
+               </td>
+               <td>
+                  <span>{{ pot.totalCost }}</span>
+               </td>
+
+            </tr>
+         </tbody>
+      </table>
+      </form>
    </div>
    <div class="event__list-area pb-20">
       <div class="event__content-inner">
@@ -33,7 +67,7 @@
 
                   <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
                      <form style="display: flex; align-items: center;">
-                        
+
                         <label for="startDate"
                            style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;">
                            Look in this area
@@ -44,14 +78,14 @@
                        <input type="date"
                          style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;"
                          name="endDate" [(ngModel)]="endDate" id="endDate" placeholder="End Date"> -->
-                         <input type="date"
-                         style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;"
-                         name="startDate" [(ngModel)]="startDate" id="startDate" placeholder="Start Date">
-                       
-                       <input type="date"
-                         style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;"
-                         name="endDate" [(ngModel)]="endDate" id="endDate" placeholder="End Date">
-                       
+                        <input type="date"
+                           style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;"
+                           name="startDate" [(ngModel)]="startDate" id="startDate" placeholder="Start Date">
+
+                        <input type="date"
+                           style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;"
+                           name="endDate" [(ngModel)]="endDate" id="endDate" placeholder="End Date">
+
 
                         <button type="submit"
                            style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
