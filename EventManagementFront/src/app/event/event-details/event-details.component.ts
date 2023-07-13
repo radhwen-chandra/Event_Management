@@ -8,7 +8,7 @@ import { EventService } from 'src/app/services/event.service';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-list: any[]=[];
+list: any;
 id!:number;
   constructor(private es: EventService,private route: ActivatedRoute) { }
 
