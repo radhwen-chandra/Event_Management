@@ -5,6 +5,7 @@ import { AddLogisticsComponent } from './add-logistics/add-logistics.component';
 import { UpdatelogisticsComponent } from './updatelogistics/updatelogistics.component';
 import { LogistiqueComponent } from './logistique.component';
 import { AffecterEventComponent } from './affecter-event/affecter-event.component';
+import { EventDetailsComponent } from '../event/event-details/event-details.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: 'list',   component: LogisticsListComponent },
       { path: 'update/:id',   component: UpdatelogisticsComponent },
       { path: 'affecterEvent/:idEvent',   component: AffecterEventComponent },
+      { path: 'details/:id',   component: EventDetailsComponent },
 
      
     ]

@@ -29,13 +29,13 @@
                      </div>
 
                   </div>
-                  <div class="review__main-wrapper pt-25">
+                  <div class="review__main-wrapper pt-25" *ngIf="list">
 
                      <div class="review__author-meta mb-15">
 
                         <div class="review__author-name">
                            <h4>Organiser Name : </h4>
-                           <p>**</p>
+                           <p>{{list.organiser}}</p>
                         </div>
                      </div>
                      <div class="review__tab">
@@ -49,10 +49,6 @@
                                  aria-selected="false" tabindex="-1">review</button>
                            </div>
                         </nav>
-                        <div class="card__title-inner">
-                           <h4 class="event__information-title">Event Name</h4>
-                        </div>
-                        <h4>Ticket price</h4>
                         <div class="tab-content" id="nav-tabContent">
                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                               aria-labelledby="nav-home-tab" tabindex="0">
@@ -62,27 +58,47 @@
                                     <div class="event__meta-time">
                                        <ul>
                                           <li>
-                                             <span>Start Date : </span>
+                                             <span>Event Name :  </span>
+                                             {{list.eventTitle}}
+                                          </li>
+                                          <li>
+                                             <span>Category : </span>
+                                             <p>{{list.category}}</p>
+                                          </li>
+                                          <li>
+                                             <span>Start Date: </span>
+                                             <p>list{{list.dateEvent}}</p>
                                           </li>
                                           <li>
                                              <span>End Date : </span>
+                                             <P>{{list.dateFinEvent}}</P>
                                           </li>
 
                                           <li>
                                              <span>Reg. Deadline : </span>
-                                             June 1, 2023
+                                           <p> {{list.deadLine}}</p> 
                                           </li>
                                           <li>
                                              <span>Venue : </span>
-                                             <p>xxxx</p>
+                                             <p>{{list.adressEvent}}</p>
                                           </li>
                                           <li>
                                              <span>Email : </span>
-                                             <p>xxxx</p>
+                                             <p>{{list.email}}</p>
                                           </li>
+                                          
                                           <li>
                                              <span>Phone Number : </span>
-                                             <p>xxxx</p>
+                                             <p>{{list.telNumber}}</p>
+                                          </li>
+                                          <li>
+                                             <span>Number of places remaining : </span>
+                                             <p>{{list.nbrParticipant}}</p>
+                                          </li>
+                                        
+                                          <li>
+                                             <span>Status : </span>
+                                             <p>{{list.status}}</p>
                                           </li>
                                        </ul>
                                     </div>
@@ -91,20 +107,18 @@
                               <div class="about__content mt-30">
                                  <h4>About This Event</h4>
                               </div>
-                              <p>xxxxxxxxxxxx</p>
+                              <p>{{list.description}}</p>
                               <div class="about__content mt-30">
                                  <h4>Logistics</h4>
                               </div>
                               <p>xxxxxxxxxxxx</p>
                            </div>
-
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
                            tabindex="0">
                            <div class="review__item mt-40">
                               <div class="review__item-inner">
                               </div>
-                              <p></p>
                            </div>
                         </div>
                      </div>

@@ -26,6 +26,7 @@ export class ListcrudComponent implements OnInit {
   getallevents(){
     this.es.getAll().subscribe((res)=>{
       this.lists = res
+      console.log(res)
     },(err)=>{
       console.log(err)
     })
