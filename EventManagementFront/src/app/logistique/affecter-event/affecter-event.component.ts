@@ -29,7 +29,6 @@ idEvent : number =  this.route.snapshot.params['idEvent']
         this.affectedList.forEach(element => {
           if(element.event.id == this.idEvent){
             this.idLogistic = element.id
-            
             return
           }
         });
@@ -40,10 +39,7 @@ idEvent : number =  this.route.snapshot.params['idEvent']
     );
   }
   saveChanges(){
-    // this.ls.affecterEvent(this.idEvent,this.idLogistic).subscribe((res)=>
-    // console.log(res))
-    this.ls.update(this.idLogistic,{event:null}).subscribe((res)=>{
-      console.log(res)
-    })
+    this.ls.affecterEvent(this.idEvent,this.idLogistic).subscribe((res)=>
+    console.log(res))
   }
 }

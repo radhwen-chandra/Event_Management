@@ -31,47 +31,19 @@
                <form class="create__event-main pt-25" [formGroup]="form" (submit)="onSubmit()">
                   <div class="event__right-box">
                      <div class="create__input-wrapper">
-                        <div action="#">
-
-                           <!-- <div class="col-xxl-6 col-xl-6 col-lg-6">
-                              <label class="input__field-text">Event Passes</label>
-                              <div class="contact__select">
-                                 <select formControlName="libele">
-                                    <option value="0">choose</option>
-                                    <option value="1">Hebergement</option>
-                                    <option value="2">Transport</option>
-                                    <option value="3">Assurance</option>
-                                    <option value="4">Co-Assistance</option>
-                                    <option value="5">SurveillanceVIP</option>
-                                    <option value="6">Repas</option>
-                                    <option value="7">VIP Pass</option>
-                                    <option value="8">Ultra Pass</option>
-                                 </select>
-                              </div>
-                           </div> -->
-
-
-                           <!-- <div class="singel__input-field mb-15">
-                              <label class="input__field-text">Event Passes</label>
-                              <input type="text" formControlName="libele">
-                           </div>
-
+                        <div>
                            <div class="singel__input-field mb-15">
-                              <label class="input__field-text">Cost (USD)</label>
-                              <input type="text" formControlName="cost">
-                           </div> -->
-                           <div class="singel__input-field mb-15">
-                              <label class="input__field-text" for="libele">Libellé</label>
+                              <label class="input__field-text" for="libele">Passes</label>
                               <input type="text" id="libele" formControlName="libele" required>
                             </div>
                             <div class="singel__input-field mb-15">
-                              <label class="input__field-text">Nombre de participants</label>
+                              <label class="input__field-text">Number of Grantees</label>
                               <input type="number" formControlName="participants" required>
                             </div>
                             
                           
                             <div class="singel__input-field mb-15">
-                              <label class="input__field-text" for="cost">Coût</label>
+                              <label class="input__field-text" for="cost">Cost</label>
                               <input type="number" id="cost" formControlName="cost" required>
                             </div>
                            <button class="input__btn w-100" type="submit">Agree this Pass</button>

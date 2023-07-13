@@ -5,7 +5,6 @@ import { ContainerLayoutsRoutingModule } from './container-layouts-routing.modul
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { SidenavComponent } from '../components/sidenav/sidenav.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
-import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -19,8 +18,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     ContainerLayoutsRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    NgxPaginationModule
+    ReactiveFormsModule
   ]
 })
 export class ContainerLayoutsModule { }

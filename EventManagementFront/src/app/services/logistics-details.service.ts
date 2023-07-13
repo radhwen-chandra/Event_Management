@@ -32,4 +32,7 @@ export class LogisticsDetailsService {
     return forkJoin(requests);
   }
 
+  getById(id:number): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/${id}`);
+  }
 }
