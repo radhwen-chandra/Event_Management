@@ -14,6 +14,7 @@ export class EventService {
    getAll(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}`);
   }
+  
 
   create(data: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}`, data);
@@ -26,4 +27,14 @@ export class EventService {
   delete(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/${id}`);
   }
+
+  getById(id:number): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/${id}`);
+  }
+  
+
+  getEventByStatus(status:any): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/byStatus/${status}`);
+  }
+
 }

@@ -16,7 +16,7 @@
                 </div>
              </div>
              <div class="breadcrum__button">
-                <a class="breadcrum__btn event__popup-active" href="add-event">Create Event<i class="fa-regular fa-plus"></i></a>
+                <a class="breadcrum__btn event__popup-active" routerLink="../add">Create Event<i class="fa-regular fa-plus"></i></a>
              </div>
           </div>
        </div>
@@ -28,13 +28,41 @@
                 <div class="body__card-wrapper">
                    <h4 class="event__information-title mb-25">Event Information</h4>
                    <div class="attendant__wrapper mb-35">
+                     <div>
+                        <label *ngFor="let status of lists">
+                          <input type="checkbox" (change)="updateSelectedStatus($event, status)">{{ status }}
+                        </label>
+                      </div>
+                     <form>
+                        Status
+                        <div class="container">
+                           <div>
+                              <div> <input type="checkbox">
+                                       <label>PLANNED</label>
+                              </div>
+                           </div>
+                           <div> <input type="checkbox">
+                                    <label>CANCELED</label>
+                           </div>
+                           <div> <input type="checkbox">
+                                    <label>POSTPONED</label>
+                           </div>
+                           <div> <input type="checkbox">
+                                    <label>IN PROGRESS</label>
+                           </div>
+                           <div> <input type="checkbox">
+                                    <label>ENDED</label>
+                           </div>
+                        </div>
+                     </form>
                       <table>
                          <thead>
                             <tr>
                                <th>ID No</th>
                                <th>Event Name</th>
                                <th>Ticket Price</th>
-                               <th>Date</th>
+                               <th>Start Date</th>
+                               <th>Deadline</th>
                                <th>Location</th>
                                <th>Edit</th>
                                <th>Delete</th>
@@ -55,11 +83,16 @@
                                   </div>
                                </td>
                                <td>
-                                 {{list.ticketPrice}}
+                                 {{list.ticketPrice}} DT
                                </td>
                                <td>
                                   <div class="attendant__date" >
                                      <span>{{list.dateEvent}}</span>
+                                  </div>
+                               </td>
+                               <td>
+                                  <div class="attendant__date" >
+                                     <span>{{list.deadLine}}</span>
                                   </div>
                                </td>
                                <td>
@@ -69,10 +102,10 @@
                                   </div>
                                </td>
                                <td>
-                                 <button type="button" class="btn btn-primary" routerLink="../update/{{list.id}}">edit</button>
+                                 <button type="button" class="btn btn-primary" routerLink="../update/{{list.id}}">Edit</button>
                                </td>
                                <td>
-                                 <button type="button" class="btn btn-danger"(click)="deleteEvent(list.id)">delete</button>
+                                 <button type="button" class="btn btn-danger"(click)="deleteEvent(list.id)">Delete</button>
                                </td>
                             </tr>
                          </tbody>
