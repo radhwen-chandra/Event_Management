@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 interface Logistics {
   id: number;
@@ -47,12 +47,30 @@ export class LogisticsService {
   //   const url = `${this.baseUrl}/${id}/affectLogisticDetails`;
   //   return this.http.put(url, logisticDetailsList);
   // }
-  
+
   affecterLogisticdetailsLogistique(logistics: any, logisticDetailsList: any[]): Observable<any> {
     return this.http.post(`${this.baseUrl}/affecter-logistic-details-logistique`, { logistics, logisticDetailsList });
   }
   affecterEvent(idEvent: number,id: number): Observable<any>{
     return this.http.post<any>(`${this.baseUrl}/${idEvent}/${id}`,{});
-  }   
+  }
+
+  searchByDateRange(lists: Logistics[], startDate: Date | null, endDate: Date | null): Logistics[] {
+    const filteredLists = lists.filter((item) => {
+      const listItemDate = new Date(item.datelogistic);
+      if (startDate && endDate) {
+        return listItemDate >= startDate && listItemDate <= endDate;
+      } else if (startDate) {
+        return listItemDate >= startDate;
+      } else if (endDate) {
+        return listItemDate <= endDate;
+      }
+      return false;
+    });
+
+    return filteredLists.sort((a, b) => {
+      return new Date(a.datelogistic).getTime() - new Date(b.datelogistic).getTime();
+    });
+  }
 
 }

@@ -1,7 +1,5 @@
-import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { ProfileComponent } from '../profile/profile.component';
-import { DashboardComponent } from '../dashboard/dashboard.component';
+import { RouterModule, Routes } from '@angular/router';
 import { ContainerLayoutsComponent } from './container-layouts.component';
 
 
@@ -12,6 +10,7 @@ const routes: Routes = [
       { path:'logistic',loadChildren:() => import('../logistique/logistic.module').then(m => m.LogisticModule)},
       { path:'logisticdetails',loadChildren:() => import('../logistic-detail/logdetail.module').then(m => m.LogdetailModule)},
       { path:'event',loadChildren:() => import('../event/event.module').then(m => m.EventModule)},
+      { path: 'user', loadChildren: () => import('../user/user.module').then(m => m.UserModule) },
     ]
   }
 ];
