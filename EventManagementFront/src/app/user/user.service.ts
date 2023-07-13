@@ -59,5 +59,10 @@ export class UserService {
   }
 
 
+  getCreationDateDistribution(): Observable<any> {
+    return this.http.get<any>(`${this.endpointService}/creationdatedistribution`);
+  }
+
+
 }
 

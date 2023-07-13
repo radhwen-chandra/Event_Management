@@ -14,6 +14,11 @@ export class UserDashboardComponent implements OnInit {
   constructor(private userService : UserService) { }
 
   ngOnInit(): void {
+    this.userService.getCreationDateDistribution().subscribe(data=>{
+      if(data){
+        debugger
+      }
+    })
     this.userService.percentage().subscribe(data => {
       if (data) {
        debugger
