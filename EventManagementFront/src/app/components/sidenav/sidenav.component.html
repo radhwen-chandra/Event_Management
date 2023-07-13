@@ -39,6 +39,11 @@
                    <span class="nav-text">Logistic List</span>
                 </a>
              </li>
+              <li *ngIf="isAdmin || isOrganiser"><a [routerLink]="['/logisticdetails/list']" aria-expanded="false">
+                  <i class="flaticon-ticket-1"></i>
+                  <span class="nav-text">Logistic Details list</span>
+                </a>
+              </li>
           </ul>
           <div class="sidebar__thumb mb-60 mt-100">
 

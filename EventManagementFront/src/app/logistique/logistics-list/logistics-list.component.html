@@ -10,23 +10,23 @@
                   <nav>
                      <ul>
                         <li><span><a href="dashboard.html">Home</a></span></li>
-                        <li class="active"><a href="http://localhost:4200/logistic/list">Logistic List</a></li>
+                        <li class="active"><a [routerLink]="['/logistic/list']">Logistic List</a></li>
                      </ul>
                   </nav>
                </div>
             </div>
-          
+
 
 
 
             <div class="breadcrum__button">
-               <a class="breadcrum__btn event__popup-active" href="add-event">Create Logistic<i
+               <a class="breadcrum__btn event__popup-active" [routerLink]="['/logistic/add']">Create Logistic<i
                      class="fa-regular fa-plus"></i></a>
             </div>
          </div>
       </div>
    </div>
-   
+
 
 
 
@@ -85,7 +85,7 @@
                         <tbody>
                            <!-- <tr *ngFor="let list of sortedLists"> -->
                            <tr *ngFor="let list of pagedLists">
-                              
+
                               <td>
                                  {{ list.commentaire }}
                               </td>
