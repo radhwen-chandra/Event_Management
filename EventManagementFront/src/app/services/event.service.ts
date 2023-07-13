@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,12 +9,12 @@ export class EventService {
 
   private baseUrl = 'http://localhost:2222/Emanage/api/event';
   constructor(private http: HttpClient) {
-    
+
    }
    getAll(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}`);
   }
-  
+
 
   create(data: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}`, data);
@@ -31,7 +31,7 @@ export class EventService {
   getById(id:number): Observable<any>{
     return this.http.get<any>(`${this.baseUrl}/${id}`);
   }
-  
+
 
   getEventByStatus(status:any): Observable<any>{
     return this.http.get<any>(`${this.baseUrl}/byStatus/${status}`);
@@ -40,5 +40,9 @@ export class EventService {
     return this.http.get<any>(`${this.baseUrl}/byCategory/${category}`);
   }
 
-  
+
+  topEvents(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/topevents`);
+  }
+
 }

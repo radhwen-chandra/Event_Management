@@ -31,7 +31,7 @@ export class SignInComponent implements OnInit {
    this.userService.authenticate(user).subscribe(data=>{
     if(data){
       this.authenticationService.setToken(data.token,data.currentUser);
-      this.router.navigate(["/user/user-list"]);
+      this.router.navigate(["/event/list"]);
 
 
     }else{

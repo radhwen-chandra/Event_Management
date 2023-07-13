@@ -12,10 +12,10 @@ list: any;
 id!:number;
   constructor(private es: EventService,private route: ActivatedRoute) { }
 
-  ngOnInit(): void { 
-    
+  ngOnInit(): void {
+
     this.route.params.subscribe(params => {
-      this.id = params['id']}); 
+      this.id = params['id']});
       this.getEvent(this.id);
   }
 getEvent(id:number){

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from '@app/app/services/event.service';
+import { LogisticsDetailsService } from '@app/app/services/logistics-details.service';
 import { UserService } from '../user.service';
 
 @Component({
@@ -8,29 +10,29 @@ import { UserService } from '../user.service';
 })
 export class UserDashboardComponent implements OnInit {
 
+  topEvents: any;
   topUsers : any;
   worstUsers : any;
   newUsers : any;
-  constructor(private userService : UserService) { }
+  lists: any[] = [];
+  totality: number = 0;
+  constructor(private userService : UserService,private logisticDetailsService : LogisticsDetailsService,private es: EventService) { }
 
   ngOnInit(): void {
-    this.userService.getCreationDateDistribution().subscribe(data=>{
+
+    this.es.getAll().subscribe(data=>{
       if(data){
         debugger
+        this.topEvents = data;
       }
     })
-    this.userService.percentage().subscribe(data => {
-      if (data) {
-       debugger
-      }
-    })
-    this.userService.topUsers().subscribe(data=> {
+    this.userService.findAll().subscribe(data=> {
       if(data){
         this.topUsers = data ;
       }
     })
 
-    this.userService.worstUsers().subscribe(data => {
+    this.userService.findAll().subscribe(data => {
       if (data) {
         this.worstUsers = data;
       }
@@ -42,6 +44,30 @@ export class UserDashboardComponent implements OnInit {
         this.newUsers = data;
       }
     })
+
+    this.getAllLogisticsDetails();
+  }
+
+  calculateTotality(): number {
+    let totality = 0;
+    for (const logistics of this.lists) {
+      const cost = logistics.cost;
+      const participants = logistics.participants;
+      totality += cost * participants;
+    }
+    return totality;
+  }
+
+  getAllLogisticsDetails() {
+    this.logisticDetailsService.getAll().subscribe(
+      (res) => {
+        this.lists = res;
+        this.calculateTotality();
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
 }

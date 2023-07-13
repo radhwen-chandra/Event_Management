@@ -52,7 +52,7 @@ export class LogisticsService {
     return this.http.post(`${this.baseUrl}/affecter-logistic-details-logistique`, { logistics, logisticDetailsList });
   }
   affecterEvent(idEvent: number,id: number): Observable<any>{
-    return this.http.post<any>(`${this.baseUrl}/${idEvent}/${id}`,{});
+    return this.http.post<any>(`${this.baseUrl}/affectationEvent/${idEvent}/${id}`,{});
   }
 
   searchByDateRange(lists: Logistics[], startDate: Date | null, endDate: Date | null): Logistics[] {
@@ -71,5 +71,9 @@ export class LogisticsService {
     return filteredLists.sort((a, b) => {
       return new Date(a.datelogistic).getTime() - new Date(b.datelogistic).getTime();
     });
+  }
+
+  getById(id: number): Observable<Logistics> {
+    return this.http.get<Logistics>(`${this.baseUrl}/${id}`);
   }
 }
